@@ -15,29 +15,29 @@ public class Fractal {
 
         double rmin = -2.0;
         double rmax = 0.7;
-        double rinc = (rmax-rmin)/(double)dimr;
+        double rinc = (rmax - rmin) / (double) dimr;
 
         double imin = -1.0;
         double imax = 1.0;
-        double iinc = (imax-imin)/(double)dimi;
+        double iinc = (imax - imin) / (double) dimi;
 
         for (int i = 0; i < dimr; i++) {
             for (int j = 0; j < dimi; j++) {
                 Complex z = new Complex(0.0, 0.0);
-                Complex c = new Complex(rmin+rinc*i, imin+iinc*j);
-                for(int k = 0; k < maxIteration; k++) {
+                Complex c = new Complex(rmin + rinc * i, imin + iinc * j);
+                for (int k = 0; k < maxIteration; k++) {
                     z = z.power(2).plus(c);
                 }
-                if(z.abs() < 100000000.0){
+                if (z.abs() < 100000000.0) {
                     grid[i][j] = 1;
                 }
             }
         }
 
         //Print Grid
-        for(int i = 0; i < dimr; i++){
+        for (int i = 0; i < dimr; i++) {
             String t = "";
-            for(int j = 0; j < dimi; j++) {
+            for (int j = 0; j < dimi; j++) {
                 t = t.concat(Integer.toString(grid[j][i]));
             }
             System.out.println(t);
